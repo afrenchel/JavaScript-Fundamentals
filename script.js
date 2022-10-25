@@ -176,6 +176,7 @@ if (birthYear <= 2000) {
 console.log(century); */
 
 // 2 Coding challenge
+/*
 const massMark = 78;
 const heightMark = 1.69;
 const massJohn = 92;
@@ -188,3 +189,232 @@ if (bmiMark > bmiJohn) {
 } else {
   console.log(`John's BMI (${bmiJohn}) is higher than Mark's BMI(${bmiMark})`);
 }
+*/
+
+//Type conversion and coercion
+//type conversion done manually
+
+/*
+const inputYear = "1991";
+console.log(Number(inputYear) + 18);
+console.log(inputYear + 18);
+
+
+
+//type coercion done automatically
+console.log("I am" + 23 + " years old");
+console.log("23" - "10" - 3);
+console.log("23" * "2");
+
+//exercise
+let n = "1" + 1;
+n = n - 1;
+console.log(n);
+
+//In practice JS makes type coercion we don't do this manually
+console.log(Boolean(0)); //false
+console.log(Boolean(undefined)); //false
+console.log(Boolean("Jonas")); //true-thruthy
+console.log(Boolean({})); // true-thruthy
+console.log(Boolean("")); //false-falsy
+
+//logical context example
+
+/* 
+const money = 0;
+
+if (money) {
+  console.log("Don't spend it all;)");
+} else {
+  console.log("You should get a job");
+}
+
+let height;
+
+if (height) {
+  console.log("Yey! Height is defined");
+} else {
+  console.log("Height is undefined");
+}
+
+let height = 2;
+
+if (height) {
+  console.log("Yey! Height is defined");
+} else {
+  console.log("Height is undefined");
+}
+
+//if we define height=0 ; we still get the answer that height is undefined beacuse 0 is a falsy value, but we actually defined a value. Later on how to solve this!
+*/
+
+//Equality operators === ==
+//= is for assignment
+//=== is for comparison if something is actually equal with sth else -strict- no type coercion
+//== loose , does type coercion -we can compare a string to a number to see if they are equal
+/*
+const age = "18";
+if (age === 18) {
+  console.log("You've just become an adult:d");
+}
+
+const age = 18;
+if (age == 18) {
+  console.log("You've just become an adult:d");
+}
+
+//"18"==18
+
+
+const favourite = prompt("What's your favourite number?");
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite == 23) {
+  // "23" == 23
+  console.log("Cool! 23 is an amazing number!");
+}
+
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite === 23) {
+  // 23 === 23
+  console.log("Cool! 23 is an amazing number!");
+}
+else if( favourite === 7) {
+  console.log("7 is also a cool number!");
+}
+else {
+  console.log("Number is not 23 or 7");
+
+  !== strict (Is different?)
+  != loose (Is different?) */
+
+//Boolean logic AND OR NOT
+//AND &&
+//OR ||
+//
+
+//Coding challenge 3
+
+// //1.
+// const avgScoreDolphins = (96 + 108 + 89) / 3; // result 97.66
+// const avgScoreKoalas = (88 + 91 + 110) / 3; // 96.33
+// console.log(avgScoreDolphins, avgScoreKoalas);
+
+// if (avgScoreDolphins > avgScoreKoalas) {
+//   console.log("Dolphin's win the trophy!");
+// } else if (avgScoreKoalas > avgScoreDolphins) {
+//   console.log("Koala's win the trophy!");
+// } else {
+//   console.log("It's a draw!");
+// }
+// //Result: Dolphin's win the trophy!
+
+// //2 Bonus
+// const avgScoreDolphins = (97 + 112 + 101) / 3; // 103.33
+// const avgScoreKoalas = (109 + 95 + 123) / 3; //109
+// console.log(avgScoreDolphins, avgScoreKoalas);
+
+// if (avgScoreDolphins >= 100 && avgScoreDolphins > avgScoreKoalas) {
+//   console.log("Dolphin's win the trophy!");
+// } else if (avgScoreKoalas >= 100 && avgScoreKoalas > avgScoreDolphins) {
+//   console.log("Koala's win the trophy!");
+// } else {
+//   console.log("It's a draw");
+// }
+// //Result: Koala's win the trophy!
+
+// //3 Bonus
+// const avgScoreDolphins = (97 + 112 + 101) / 3; // 103.33
+// const avgScoreKoalas = (109 + 95 + 106) / 3; //103.33
+// console.log(avgScoreDolphins, avgScoreKoalas);
+
+// if (
+//   (avgScoreDolphins,
+//   avgScoreKoalas >= 100 && avgScoreDolphins === avgScoreKoalas)
+// ) {
+//   console.log("Both win the trophy!");
+// }
+// //Result : Both win the trophy!
+
+//The switch statement
+
+// const day = "sunday";
+
+// switch (day) {
+//   case "monday": //day ===monday
+//     console.log("Plan course structure");
+//     console.log("Go to coding meeting");
+//     break;
+
+//   case "tuesday":
+//     console.log("Prepare theory videos");
+//     break;
+
+//   case "wednesday":
+//   case "thursday":
+//     console.log("Write code examples");
+//     break;
+
+//   case "friday":
+//     console.log("Record videos");
+//     break;
+//   case "saturday":
+//   case "sunday":
+//     console.log("Enjoy the weekend");
+//     break;
+
+//   default:
+//     console.log("Not a valid day");
+// }
+
+// //If variant of the Switch statement
+// let day = "friday";
+// if (day === "monday") {
+//   console.log("Plan course structure");
+// } else if (day === "tuesday") {
+//   console.log("Go to meeting");
+// } else if (day === "wednesday" || day === "thursday") {
+//   console.log("Record videos");
+// } else if (day === "friday") {
+//   console.log("Upload videos");
+// } else if (day === "saturday" || day === "sunday") {
+//   console.log("Plan enjoy the weekend");
+// } else {
+//   console.log("Not a valid day");
+// }
+
+//The conditional operator/turnary operator
+
+// const age = 23;
+// age >= 18
+//   ? console.log("I like to drink wine")
+//   : console.log("I like to drink water");
+
+// //create a value// short code instead of if statement
+// const drink = age >= 18 ? "wine" : "water";
+// console.log(drink);
+
+// let drink2;
+// if (age >= 18) {
+//   drink2 = "wine";
+// } else {
+//   drink2 = "water";
+// }
+// console.log(drink2);
+
+// //Using the conditional in a template literal
+// console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
+
+//Coding challenge 4
+
+// const bill = 275;
+// const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
+// console.log(
+//   `The bill was ${bill}, the tip was ${tip}, and the total value was ${
+//     bill + tip
+//   }`
+// );
