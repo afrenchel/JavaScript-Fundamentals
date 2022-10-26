@@ -418,3 +418,179 @@ else {
 //     bill + tip
 //   }`
 // );
+
+//FUNDAMENTALS part 2
+"use strict";
+
+//FUNCTIONS
+
+// function logger() {
+//   console.log("My name is Jonas");
+// }
+
+// logger(); //running/callin/invoking the functio
+// logger();
+// logger();
+
+// function fruitProcessor(apples, oranges) {
+//   const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+//   return juice;
+// }
+
+// fruitProcessor(5, 0);
+// const appleJuice = fruitProcessor(5, 0);
+// console.log(appleJuice);
+
+// const appleOrangeJuice = fruitProcessor(2, 4);
+// console.log(appleOrangeJuice);
+
+// //Function declaration
+// function calcAge1(birthYear) {
+//   //const age = 2037 - birthYear;
+//   return 2037 - birthYear;
+// }
+// const age1 = calcAge1(1991);
+// console.log(age1);
+
+// //Function expression
+// const calcAge2 = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+// const age2 = calcAge2(1991);
+// console.log(age1, age2);
+
+//ARROW FUNCTION
+// //simpler
+// const calcAge3 = (birthYear) => 2037 - birthYear;
+// const age3 = calcAge3(1991);
+// console.log(age3);
+
+// //complex arrow function
+// const yearsUntilRetirement = (birthYear, firstName) => {
+//   const age = 2037 - birthYear;
+//   const retirement = 65 - age;
+//   //   return retirement;
+//   return `${firstName} retires in ${retirement} years`;
+// };
+// console.log(yearsUntilRetirement(1991));
+// console.log(yearsUntilRetirement(1991, "Jonas"));
+// console.log(yearsUntilRetirement(1980, "Bob"));
+
+//FUnctions calling functions
+
+// function cutFruitPieces(fruit) {
+//   return fruit * 4;
+// } //machine that cuts the fruits
+
+// function fruitProcessor(apples, oranges) {
+//   const applePieces = cutFruitPieces(apples);
+//   const orangePieces = cutFruitPieces(oranges);
+//   const juice = `Juice with ${applePieces}  pieces of apples and ${orangePieces} pieces of oranges.`;
+//   return juice;
+// }
+
+// console.log(fruitProcessor(2, 3));
+
+//REVIEW functions
+
+// ARRAYS
+
+// const friend1 = "Michael";
+// const friend2 = "Steven";
+// const friend3 = "Peter";
+// //create and array
+// const friends = ["Michael", "Steven", "Peter"];
+
+// console.log(friends);
+
+// const y = new Array(1991, 1992, 1993); //another way to create
+
+// //elementele din array sunt numerotate incepand cu 0
+// console.log(friends[0]); //print first element
+// console.log(friends[2]); //print last element
+
+// console.log(friends.length); //how many elements we have?
+// console.log(friends[friends.length - 1]); //print last element
+
+// friends[2] = "Jay"; //replace last element from Peter to Jay
+
+// // friends = ["Bob", "John"] will get error, we can't change an entire array
+// const firstName = "Jonas";
+// const jonas = [firstName, "Schmedtmann", 2037 - 1991, "teacher", friends];
+// console.log(jonas);
+
+// //Exercise
+
+// const calcAge = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+// const years = [1990, 1967, 2002, 2010, 2018];
+// //we use the calcAge function for each element of the array we can't put calcAge(years)
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length - 1]);
+// console.log(age1, age2, age3);
+// //we can store the results into a new array
+// const ages = [
+//   calcAge(years[0]),
+//   calcAge(years[1]),
+//   calcAge(years[years.length - 1]),
+// ];
+// console.log(ages); //print the result of the new array with ages base on birthYear
+
+//Basic arrawy operations
+
+// //PUSH-add element at the end of the array
+// const friends = ["Michael", "Steven", "Peter"];
+// const newLenght = friends.push("Jay");
+// friends.push("Jay");
+// console.log(friends);
+// console.log(newLenght); //4
+
+// //UNSHIFT-add element at the beginning of the array
+// friends.unshift("John");
+// console.log(friends);
+
+// //Remove elements:
+
+// //POP- remove last element
+// friends.pop(); //we removed Jay
+// console.log(friends);
+// const popped = friends.pop();
+// console.log(popped); //returns what was removed
+
+// //SHIFT-remove first element
+
+// friends.shift();
+// console.log(friends);
+
+// //Which position has an element on the array?
+
+// //indexOF
+// console.log(friends.indexOf("Steven")); //pozition of the element
+
+// //includes- uses strict equality no type coercion
+// console.log(friends.includes("Steven")); // if this element is present in this array
+// console.log(friends.includes("Bob")); //false
+
+// //we can use this methods in if statements
+// if (friends.includes("Peter")) {
+//   console.log("You have a friend called Peter");
+// }
+
+// //Chalenge 2-Arrays
+
+// const calcTip = function (bill) {
+//   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+// // //arrow
+// // const calcTip= bill=> bill>=50 $$ bill<=300 ?
+// // bill*0.15 : bill*0.2;
+
+// const bills = [125, 555, 44]; //create array of bills
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])]; //create new array with the tips calculated with the help of the calcTip functio
+// console.log(tips);
+
+// const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+// console.log(totals);
