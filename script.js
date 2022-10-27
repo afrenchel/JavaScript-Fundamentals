@@ -594,3 +594,270 @@ else {
 
 // const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 // console.log(totals);
+
+//Fizzbuzz
+
+// const challenge = [
+//   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+//   23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
+//   42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+//   61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
+//   80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98,
+//   99, 100,
+// ];
+// // console.log(challenge);
+
+// const printFB = challenge.for((f = 0), f <= 101, f++);
+// {
+//   if (f % 3 === 0) console.log("FIZZ");
+//   else if (f % 5 === 0) console.log("BUZZ");
+//   else if (f % 15 === 0) console.log("FIZZBUZZ");
+//   else console.log(f);
+// }
+
+// console.log(printFB);
+
+//OBJECTS
+
+// const jonas = {
+//   firstName: "Jonas",
+//   lastName: "Schmedtmann",
+//   age: 2037 - 1991,
+//   job: "teacher",
+//   friends: ["Michael", "Peter", "Steven"],
+// };
+
+// const nameKey = "Name";
+// console.log(jonas["first" + nameKey]);
+// console.log(jonas["last" + nameKey]);
+
+// const interestedIn = prompt(
+//   "What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends."
+// );
+// console.log(jonas[interestedIn]);
+
+// if (jonas[interestedIn]) {
+//   console.log(jonas[interestedIn]);
+// } else {
+//   console.log(
+//     "Wrong request!What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends."
+//   );
+// }
+
+//Challenge
+//Jonas has 3 friends, and his best friend is called Michael.
+// console.log(
+//   `${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`
+// );
+//OBJECT METHODS
+// //an object can have different kind of values
+// const jonas = {
+//   firstName: "Jonas",
+//   lastName: "Schmedtmann",
+//   birthYear: 1991, //number value
+//   job: "teacher", //string value
+//   friends: ["Michael", "Peter", "Steven"], //array value
+//   hasDriverLicense: true, //boolean value
+//   //   calcAge: function (birthYear) {
+//   //     return 2037 - birthYear;
+//   }, //function value
+// };
+// calcAge: function () {
+//   return 2007 - this.birthYear; //"this" object calling the method
+// },
+//creating a new proprety of the object using THIS
+//   calcAge: function () {
+//     this.age = 2037 - this.birthYear;
+//     return this.age;
+//   },
+
+//   getSummary: function () {
+//     return `${this.firstName} is a ${this.calcAge()} -year old ${
+//       jonas.job
+//     }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license`;
+//   },
+// };
+// console.log(jonas.calcAge());
+// console.log(jonas.age);
+
+// console.log(jonas.getSummary());
+
+// //print in 2 methods DOT vs Brackets
+// console.log(jonas.calcAge(1991));
+// console.log(jonas["calcAge"](1991));
+
+//Challenge
+//"Jonas is a 46-year old teacher and he has a driver's license."
+
+//Challenge 3 OBJECTS
+
+// const mark = {
+//   fullName: "Mark Miller",
+//   mass: 78,
+//   height: 1.69,
+//   calcBMI: function () {
+//     this.bmi = this.mass / this.height ** 2;
+//     return this.bmi;
+//   },
+// };
+// mark.calcBMI();
+// console.log(mark.bmi);
+
+// const john = {
+//   fullName: "John Smith",
+//   mass: 92,
+//   height: 1.95,
+//   calcBMI: function () {
+//     this.bmi = this.mass / this.height ** 2;
+//     return this.bmi;
+//   },
+// };
+
+// john.calcBMI();
+// mark.calcBMI();
+// console.log(mark.bmi);
+// console.log(john.bmi);
+
+// if (mark.bmi > john.bmi) {
+//   console.log(
+//     `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI(${john.bmi})`
+//   );
+// } else if (john.bmi > mark.bmi) {
+//   console.log(
+//     `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI(${mark.bmi})`
+//   );
+// }
+
+//LOOPS
+
+//for loop keeps running while condition is TRUE
+
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting wheights repetition ${rep}`);
+// }
+
+//Wanted to log a string 10 Times
+//we use a for loop(intialized the counter at 1,after each iteration we increase the counter by one ++.the loop keeps running  while the condition <=10 is true .)
+//produces 10 strings
+
+// const jonasArray = [
+//   "Jonas",
+//   "Schmedtmann",
+//   2037 - 1991,
+//   "teacher",
+//   ["Michael", "Peter", "Steven"],
+//   true,
+// ];
+// const types = []; //create empty array
+
+// for (let i = 0; i < jonasArray.length; i++) {
+//   //Reading from jonas array
+//   console.log(jonasArray[i], typeof [i]);
+//   //Filling type array
+//   // types[i] = typeof jonas[i];
+//   types.push(typeof jonasArray[i]);
+// }
+// console.log(types);
+
+// //Calculate the ages and store them into new arrawy-exercise
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2037 - years[i]);
+// }
+// console.log(ages);
+
+// //continue and break
+// console.log("---Only strings---");
+// //continue(exist the current iteration of the loop)
+// for (let i = 0; i < jonasArray.length; i++) {
+//   if (typeof jonasArray[i] !== "string") continue; //if the typeof jonas[1] is not a string than continue with the iteration
+
+//   console.log(jonasArray[i], typeof [i]); //code execution stops
+// }
+
+// console.log("---Break with numbers---");
+// //break the loop if a number is found
+
+// for (let i = 0; i < jonasArray.length; i++) {
+//   if (typeof jonasArray[i] === "number") break; //after the first number is found nothing else is printed
+//   console.log(jonasArray[i], typeof [i]); //not printed anymore
+// }
+
+// //Looping Backwards
+// const jonas = [
+//   "Jonas",
+//   "Schmedtmann",
+//   2037 - 1991,
+//   "teacher",
+//   ["Michael", "Peter", "Steven"],
+//   true,
+// ];
+// //0,1,...4
+// //4,3,...0 (backwards)
+
+// for (let i = jonas.length - 1; i >= 0; i--) {
+//   console.log(jonas[i]);
+// }
+
+// //Loops in loops
+
+// for (let exercise = 1; exercise <= 3; exercise++) {
+//   console.log(`Starting exercise ${exercise}`);
+
+//   for (let rep = 1; rep <= 5; rep++) {
+//     console.log(`Exercise ${exercise}Lifting wwight repetition ${rep}😺`);
+//   }
+// }
+
+//The WHILE LOOP
+
+//with for
+
+// for (let rep = 1; rep < +10; rep++) {
+//   console.log(`Lifting weights repetition ${rep}`);
+// }
+// //with while
+
+// let rep = 1;
+// while (rep <= 10) {
+//   console.log(`Lifting weights repetition ${rep}`);
+//   rep++;
+// }
+
+//ROLL a dice while the roll dice is different from six.Stop at six.
+
+//different random number while we keep refreshing the page
+
+//Challenge-for and while loops
+
+//creating the function for calculationg tip
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+//creating the arrays
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+  const tip = calcTip(bills[i]); //calling the function for tip
+  tips.push(tip); //adding tip to tips array
+  totals.push(tip + bills[i]); //adding totals to totals array
+}
+console.log(bills, tips, totals);
+
+//Bonus challenge-calculating the sum of the array and the average of the array;
+
+const calcAverage = function (array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum = sum + array[i]; // sum+= array[i]
+  }
+  return sum / array.length;
+};
+console.log(calcAverage([2, 3, 6]));
+console.log(calcAverage(totals));
+console.log(calcAverage(tips));
