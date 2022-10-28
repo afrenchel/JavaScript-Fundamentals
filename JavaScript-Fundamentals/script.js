@@ -595,27 +595,19 @@ else {
 // const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 // console.log(totals);
 
-//Fizzbuzz
+// Fizzbuzz
 
-// const challenge = [
-//   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-//   23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
-//   42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-//   61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
-//   80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98,
-//   99, 100,
-// ];
-// // console.log(challenge);
-
-// const printFB = challenge.for((f = 0), f <= 101, f++);
-// {
-//   if (f % 3 === 0) console.log("FIZZ");
-//   else if (f % 5 === 0) console.log("BUZZ");
-//   else if (f % 15 === 0) console.log("FIZZBUZZ");
-//   else console.log(f);
+// for (let i = 0; i < 100; i++) {
+//   if (i % 3 === 0) {
+//     console.log("FIZZ");
+//   } else if (i % 5 === 0) {
+//     console.log("BUZZ");
+//   } else if (i % 3 === 0 && i % 5 === 0) {
+//     console.log("FIZZBUZZ");
+//   } else {
+//     console.log(i);
+//   }
 // }
-
-// console.log(printFB);
 
 //OBJECTS
 
@@ -833,31 +825,138 @@ else {
 
 //Challenge-for and while loops
 
-//creating the function for calculationg tip
-const calcTip = function (bill) {
-  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-};
-//creating the arrays
-const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
-const tips = [];
-const totals = [];
+// //creating the function for calculationg tip
+// const calcTip = function (bill) {
+//   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+// //creating the arrays
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+// const tips = [];
+// const totals = [];
 
-for (let i = 0; i < bills.length; i++) {
-  const tip = calcTip(bills[i]); //calling the function for tip
-  tips.push(tip); //adding tip to tips array
-  totals.push(tip + bills[i]); //adding totals to totals array
-}
-console.log(bills, tips, totals);
+// for (let i = 0; i < bills.length; i++) {
+//   const tip = calcTip(bills[i]); //calling the function for tip
+//   tips.push(tip); //adding tip to tips array
+//   totals.push(tip + bills[i]); //adding totals to totals array
+// }
+// console.log(bills, tips, totals);
 
-//Bonus challenge-calculating the sum of the array and the average of the array;
+// //Bonus challenge-calculating the sum of the array and the average of the array;
 
-const calcAverage = function (array) {
-  let sum = 0;
-  for (let i = 0; i < array.length; i++) {
-    sum = sum + array[i]; // sum+= array[i]
-  }
-  return sum / array.length;
-};
-console.log(calcAverage([2, 3, 6]));
-console.log(calcAverage(totals));
-console.log(calcAverage(tips));
+// const calcAverage = function (array) {
+//   let sum = 0;
+//   for (let i = 0; i < array.length; i++) {
+//     sum = sum + array[i]; // sum+= array[i]
+//   }
+//   return sum / array.length;
+// };
+// console.log(calcAverage([2, 3, 6]));
+// console.log(calcAverage(totals));
+// console.log(calcAverage(tips));
+
+//Solving a problem using resources: Google, MDN, Stackoverflow
+//Given an array of temperatures of one day, calculate the temperature amplitude.Keep in mind thaht sometime there might be a sensor error.
+
+const temperatures = [3, -2, -6, -1, "error", 9, 13, 17, 15, 14, 9, 5];
+
+//1.Step: What is temp amplitude?
+//Difference between the highest temp and lowest temp?
+//What is a sensor error and what to do when the error occurs?
+//Breaking up into sub-problems
+//*How to ignore error?
+//Find max value
+//Find min value
+//Subtract min from max(amplitude) and return it
+
+// const calcTempAmplitude = function (temps) {
+//   //looping thorugh the array
+//   let max = temps[0];
+//   let min = temps[0];
+//   for (let i = 0; i < temps.length; i++) {
+//     const curTemp = temps[i];
+//     if (typeof curTemp !== "number") continue; //ignorring the error
+//     if (curTemp > max) max = curTemp;
+
+//     if (curTemp < min) min = curTemp;
+//   }
+//   console.log(max, min);
+//   return max - min;
+// };
+
+// calcTempAmplitude([3, 7, 4, 6, 2]);
+// const amplitude = calcTempAmplitude(temperatures); //storing in a variable
+// console.log(amplitude); //result 23
+
+//Problem 2
+//Function should now recieve 2 arrays of temperature values
+//1)With 2 arrays we need to implement the same function twice?NO,just merge 2 arrays.
+//-How to merge 2 arrays?
+
+// const calcTempAmplitudeNew = function (t1, t2) {
+//   //merge 2 arrays
+//   const temps = t1.concat(t2);
+//   console.log(temps);
+
+//   //looping thorugh the array
+//   let max = temps[0];
+//   let min = temps[0];
+//   for (let i = 0; i < temps.length; i++) {
+//     const curTemp = temps[i];
+//     if (typeof curTemp !== "number") continue; //ignorring the error
+//     if (curTemp > max) max = curTemp;
+
+//     if (curTemp < min) min = curTemp;
+//   }
+//   console.log(max, min);
+//   return max - min;
+// };
+
+// calcTempAmplitudeNew([3, 7, 4, 6, 2]);
+// const amplitudeNew = calcTempAmplitudeNew([3, 5, 3], [9, 0, 5]); //storing in a variable
+// console.log(amplitudeNew); //result 23
+
+//Debugging(fix erros)
+//We also have console.warn console.error console.table
+
+// const measureKelvin = function () {
+//   const measurement = {
+//     type: "temp",
+//     unit: "celsius",
+//     value: Number(prompt("Degrees celsius")), //always returns a string, convert to number(FIX the bug)
+//   };
+//   const kelvin = measurement.value + 273;
+//   return kelvin;
+// };
+// //A. Identify the bug/Find the bug/Fix the bug
+// console.log(measureKelvin());
+
+//Coding challenge:
+//Understand the problem:
+
+//Array transformed to string separated by ...
+//What is the X days?(current index of the array+1);
+
+//Break into sub problems:
+//Transform this array into a string
+//Transformeach element into a string with C
+//String need to contain day (index+1)
+//Add... between elements and start and end of string;
+
+// const data1 = [17, 21, 23];
+// const data2 = [12, 5, -5, 0, 4];
+
+// // //hardcode for few elements
+// // console.log(`...${data1[0]}C...${data1[1]}`)
+
+// //USE a function
+
+// const printForecast = function (arr) {
+//   let str = "";
+
+//   for (let i = 0; i < arr.length; i++) {
+//     //Transform this array into a string
+//     str = str + `${arr[i]} C in ${i + 1} days ... `;
+//   }
+//   console.log("..." + str);
+// };
+// console.log(printForecast(data2));
