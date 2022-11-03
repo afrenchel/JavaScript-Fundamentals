@@ -4,136 +4,149 @@
 // const flights =
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// Data needed for first part of the section
-
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
   openingHours: {
     thu: {
       open: 12,
       close: 22,
     },
-
     fri: {
       open: 11,
       close: 23,
     },
     sat: {
-      open: 0, // Open 24 hours
+      open: 0,
       close: 24,
     },
   },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function (starterIndex, mainIndex, time, address) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
 };
 
-//Destructure the array
-
+//Calling the orderDelivery function//We can also give default values for the parameters
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del SOle,21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+// //Destructuring Arrays
 // const arr = [2, 3, 4];
-
+// //old way
 // const a = arr[0];
 // const b = arr[1];
-// const ac = arr[3];
+// const c = arr[2];
+// //new way-original array not affected
+// const [x, y, z] = arr;
+// console.log(x, y, z);
+//
+const [first, second] = restaurant.categories;
+console.log(first, second); //Italian Pizzeria
+// const[first, ,second]=restaurant.categories//leave blank space if we want to skip
 
-// const [x, y, z] = arr; // destructure the array
-// console.log(x, y, z); //will print 2,3,4
-// console.log(arr); //original array was note affected
+//switching variables
+let [main, , secondary] = restaurant.categories;
+[secondary, main] = [main, secondary]; //inverting
+console.log(main, secondary);
 
-// //switch
-// let [main, , secondary] = restaurant.categories;
-// console.log(main, secondary);
-// //Switching variables by decontructing them
-// [main, secondary] = [secondary, main];
-// console.log(main, secondary);
+//Function for ordering based on the index of starter and main menu
+restaurant.order(2, 0);
+console.log(restaurant.order(2, 0));
 
-// //recieve 2 return values from a function
-// console.log(restaurant.order(2, 0));
-// const [starter, mainCourse] = restaurant.order(2, 0); //arrays with Garlic Bread, Pizza
-// console.log(starter, mainCourse); //Garlic Bread Pizza
+//Recieve 2 return values from a function
+const [starter, mainCourse] = restaurant.order(2, 0);
+console.log(starter, mainCourse);
 
-// const nested = [2, 4, [5, 6]];
-// // const [i, , j] = nested;
-// // console.log(i, j);
+//Nested array destructuring
 
-// //destructure nested arrays
-// const [i, , [j, k]] = nested;
-// console.log(i, j, k);
+const nested = [2, 4, [5, 6]];
+// const [i, , j] = nested;
+// console.log(i,j);
 
-// //Default values for
-// const [p = 1, q = 1, r = 1] = [8];
-// console.log(p, q, r);
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
 
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+///////////////////////////////////
 
-//   order: function (starterIndex, mainIndex) {
-//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
+// // Adding Default values
+// // const [p, q, r] = [8, 9];
+// // console.log(p, q, r); //8,9,undefined
+// const [p = 1, q = 1, r = 1] = [8, 9];
+// console.log(p, q, r);//8,9,1
+/////////////////////////////
 
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
-// };
+//Destructuring Objects-we use the curly braces
 
-// //Destructuring Objects
-// const { name, openingHours, categories } = restaurant;
-// console.log(name, openingHours, categories);
+//specify the name of the propreties
 
-// const {
-//   name: restaurantName,
-//   openingHours: hours,
-//   categories: tags,
-// } = restaurant;
-// console.log(restaurantName, hours, tags); //renaming the deconstructed
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
 
-// const { menu = [], starterMenu: starters = [] } = restaurant;
-// console.log(menu, starters); //we put as default value as a empty array and renamed
+//If we want different names than the propreties names?
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
-// //Mutating variables
+//Set default values if they don't exist
+
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+//Mutating variables while destructuring objects
+
 // let a = 111;
 // let b = 999;
 // const obj = { a: 23, b: 7, c: 14 };
-
-// ({ a, b } = obj); //wrap in () and we cand mutate variables, a and b become 23 and 7
+// ({ a, b } = obj);//neew to wrap them in ()
 // console.log(a, b);
+// ////////////
 
-// //nested objects
+////Nested destructuring for objects
 
-// const {
-//   fri: { open, close },
-// } = openingHours;
-// console.log(open, close); //11 23
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c); //nested destructuring and renaming even
 
-///////Spread Operators////
+// ///////Spread Operators////
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]]; //old way
-console.log(badNewArr);
+// const arr = [7, 8, 9];
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]]; //old way
+// console.log(badNewArr);
 
-const newArr = [1, 2, ...arr]; //Spread operator ...
-console.log(newArr);
+// const newArr = [1, 2, ...arr]; //Spread operator ...
+// console.log(newArr);
 
-console.log(...newArr); //elements of the array individually;//print 1,2,7,8,9
+// console.log(...newArr); //elements of the array individually;//print 1,2,7,8,9
 
-const newMenu = [...restaurant.mainMenu, 'Gnocchi'];
-console.log(newMenu); //will print the new Menu
+// const newMenu = [...restaurant.mainMenu, 'Gnocchi'];
+// console.log(newMenu); //will print the new Menu
+
+// //Copy array
+// const mainMenuCopy = [...restaurant.mainMenu];
+
+// //Join 2 arrays
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
+
+// //Iterables : arrays, strings, maps, sets.NOT objects
+// //example with string
+// const str = 'Jonas';
+// const letters = [...str];
+// console.log(letters);
+// console.log(...str); //J O N A S
