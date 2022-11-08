@@ -457,21 +457,326 @@ const game = {
 //Challenge
 //1.Loop over the game.scored array and print each player name to the console, along with the goal number
 
-for (const [i, player] of game.scored.entries())
-  console.log(`Goal ${i + 1}: ${player}`);
+// for (const [i, player] of game.scored.entries())
+//   console.log(`Goal ${i + 1}: ${player}`);
 
-//2.Calculating the average of odds
-const odds = Object.values(game.odds);
-let average = 0;
-for (const odd of odds) average += odd;
-average /= odds.length;
-console.log(average);
+// //2.Calculating the average of odds
+// const odds = Object.values(game.odds);
+// let average = 0;
+// for (const odd of odds) average += odd;
+// average /= odds.length;
+// console.log(average);
 
-//3.Print the team and the odd
+// //3.Print the team and the odd
 
-for (const [team, odd] of Object.entries(game.odds));
-{
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr} ${odd}`);
-  ////dc da eroare??
+// for (const [team, odd] of Object.entries(game.odds));
+// {
+//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//   console.log(`Odd of ${teamStr} ${odd}`);
+//   ////dc da eroare??
+// // }
+
+// ////////////SETS///////
+// //collection of unique values, can never have dupplicate values
+
+// const ordersSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta',
+//   'Pizza',
+// ]);
+// console.log(ordersSet); //will print unique values
+
+// console.log(new Set('Jonas')); //J O N A S
+
+// console.log(ordersSet.size);
+// console.log(ordersSet.has('Bread')); //similar with includes
+// console.log(ordersSet.has('Pizza'));
+// ordersSet.add('Garlic Bread'); //add a item in the set
+// ordersSet.delete('Risotto'); //remove a item in the set
+// console.log(ordersSet);
+// // ordersSet.clear(); to delete everything
+
+// //we can loop over sets beacuse are iterables
+// for (const order of ordersSet) console.log(order);
+
+// //Example of using sets
+
+// const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+// const staffUnique = [...new Set(staff)]; //spread operator to create a new array based on the set
+// console.log(staffUnique);
+// console.log(
+//   new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+// );
+
+// ////MAPS/////
+// //we can have any type o key
+
+// const rest = new Map();
+// rest.set('name', 'Classico Italiano');
+// rest.set(1, 'Firenze, Italy');
+// rest.set(2, 'Lisbon, Portugal');
+// console.log(rest);
+// //calling the set method return the updated map
+
+// rest
+//   .set('categories', ['Italian', 'Pizzeria', 'Vegetarian'])
+//   .set('open', 12)
+//   .set('closed', 23)
+//   .set(true, 'We are open:D')
+//   .set(false, 'We are closed:(');
+
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
+
+// //example of having booleans as map keys
+// const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('closed')));
+
+// console.log(rest.has('categories')); //checking
+// rest.delete(2);
+// console.log(rest);
+// console.log(rest.size); //see the size
+// // rest.clear();//delete
+
+// rest.set([1, 2], 'Test');
+// console.log(rest);
+
+// console.log(rest.get([1, 2])); //undefined// to work we have to create an array with 1,2
+// //DOM elements
+// rest.set(document.querySelector('h1'), 'Heading');
+// console.log(rest);
+
+// //Maps Iteration//
+// const question = new Map([
+//   ['question', 'What is the best programming language in the world?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'JavaScript'],
+//   ['correct', 3],
+//   [true, 'Correct🎉'],
+//   [false, 'Try again!'],
+// ]);
+// console.log(question);
+
+// //Convert object to map
+// // const hoursMap = new Map(Object.entries(openingHours));
+// // console.log(hoursMap);
+
+// //creating a prompt quiz
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+// const answer = Number(prompt('Your answer'));
+// console.log(answer);
+// 3;
+// console.log(question.get(question.get('c3orrect') === answer));
+// 3;
+
+// //Convert Map to array
+// console.log([...question]);
+// //Methods entries(),.keys(),values()
+
+//Challenge
+
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+//1.Array called events with the unique events
+console.log(gameEvents.values()); //this is where the values are stored
+const events = [...new Set(gameEvents.values())]; //create a set based on the values and use the spread... to create new array with this values
+console.log(events);
+
+//2.Delete the event of min 64
+gameEvents.delete(64);
+
+//3.Calculate the average of an event happening
+
+const time = [...gameEvents.keys()].pop();
+console.log(
+  `An event happend,on average, every ${time / gameEvents.size} minutes`
+);
+console.log(time);
+
+//4.Looping
+
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`${half} [HALF] ${min}: ${event}`);
 }
+
+////////WORKING WITH STRINGS//////
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]); //will print A, the position of the letter
+
+console.log('B307'[0]);
+//will print B
+console.log(airline.length); //16 letters
+
+//////////////Methods//////
+
+console.log(airline.indexOf('r')); //will print 6, as the sixth letter from the string
+console.log(airline.lastIndexOf('r')); //will print 10, as the last r letter from the string
+console.log(airline.indexOf('Portugal')); //starts at position 8
+
+console.log(airline.slice(4)); //will print Air Portugal. Slice start to extract at position 4,we get a sub-string
+console.log(airline.slice(4, 7)); //will Print Air, stops extracting before reaching the end .
+
+//If you dont know actually the string and you want first words and last one
+
+console.log(airline.slice(0, airline.indexOf(' '))); //will print TAP
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //will print Portugal
+
+//define a begative begin argument
+console.log(airline.slice(-2)); //al
+console.log(airline.slice(1, -1)); //AP Air Portuga
+
+//Example//
+
+const checkMiddleSeat = function (seat) {
+  //B and E are middle seats
+  const s = seat.slice(-1); //extracts the last letter of the String
+  if (s === 'B' || s === 'E') console.log('You got the middle seat😥');
+  else console.log('You got lucky!');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//Fix capitalization of a passenger name
+
+const passenger = 'jOnAS'; //Jonas
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+console.log(passengerLower, passengerCorrect);
+
+//Comparing emails
+
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@Jonas.Io \n';
+
+//Solution
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim(); //cleaning the white space and the enter
+console.log(trimmedEmail);
+
+//Best solution
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+console.log(email === normalizedEmail);
+
+//Replacing
+
+const priceGB = '288,97$';
+const priceRON = priceGB.replace('$', 'RON').replace(',', '.');
+console.log(priceRON);
+
+const announcement = 'All passenger come to boarding door 23.Boarding door 23!';
+
+console.log(announcement.replaceAll('door', 'gate')); //replaceALL method
+
+//Booleans
+
+const airPlane = 'Airbus A320neo';
+console.log(airPlane.includes('A320')); //returns true
+console.log(airPlane.startsWith('Air'));
+
+if (airPlane.startsWith('Airbus') && airPlane.endsWith('neo')) {
+  console.log('Part of the Airbus New family!');
+}
+
+//Practice exercise
+
+const checkBagagge = function (items) {
+  const bagagge = items.toLowerCase(); //always transform to lower case the input from a user
+
+  if (bagagge.includes('knife') || bagagge.includes('gun')) {
+    console.log('You are NOT allowed on board!');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+
+checkBagagge('I have a laptop, some food and a pocket Knife!');
+checkBagagge('Socks and camera');
+checkBagagge('Got some snacks and a gun for protection!');
+
+///SPLIT//JOIN///
+
+console.log('a+very+nice+string'.split('+')); //removes the + everything split up into a new array
+console.log('Jonas Schmedtmann'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+/////Function to capitalize names////
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1)); //converting the first letter and add the last ones
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase())); //same result
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas smith gabor');
+
+//Padding
+
+const message = 'Go to gate 23';
+console.log(message.padStart(25, '+')); //string lenght and the charchter we want to add.
+console.log(message.padEnd(35, '*'));
+
+//EXAMPLE//
+const maskCreditCard = function (number) {
+  const str = number + ''; //converting the number to string
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(2345656756765));
+console.log(maskCreditCard('5465756786583'));
+
+//Repeat///
+
+const message2 = 'Bad weather...All departures delayed...';
+console.log(message2.repeat(5)); //repeating the string 5 times
+
+//Example//
+
+const planesInline = function (n) {
+  console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
+};
+planesInline(5);
+planesInline(8);
+planesInline(7);
