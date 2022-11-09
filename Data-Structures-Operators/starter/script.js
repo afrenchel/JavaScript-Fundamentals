@@ -580,203 +580,264 @@ const game = {
 // console.log([...question]);
 // //Methods entries(),.keys(),values()
 
-//Challenge
+// //Challenge
 
-const gameEvents = new Map([
-  [17, '⚽️ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽️ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽️ GOAL'],
-  [80, '⚽️ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
+// const gameEvents = new Map([
+//   [17, '⚽️ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽️ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽️ GOAL'],
+//   [80, '⚽️ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
 
-//1.Array called events with the unique events
-console.log(gameEvents.values()); //this is where the values are stored
-const events = [...new Set(gameEvents.values())]; //create a set based on the values and use the spread... to create new array with this values
-console.log(events);
+// //1.Array called events with the unique events
+// console.log(gameEvents.values()); //this is where the values are stored
+// const events = [...new Set(gameEvents.values())]; //create a set based on the values and use the spread... to create new array with this values
+// console.log(events);
 
-//2.Delete the event of min 64
-gameEvents.delete(64);
+// //2.Delete the event of min 64
+// gameEvents.delete(64);
 
-//3.Calculate the average of an event happening
+// //3.Calculate the average of an event happening
 
-const time = [...gameEvents.keys()].pop();
-console.log(
-  `An event happend,on average, every ${time / gameEvents.size} minutes`
-);
-console.log(time);
+// const time = [...gameEvents.keys()].pop();
+// console.log(
+//   `An event happend,on average, every ${time / gameEvents.size} minutes`
+// );
+// console.log(time);
 
-//4.Looping
+// //4.Looping
 
-for (const [min, event] of gameEvents) {
-  const half = min <= 45 ? 'FIRST' : 'SECOND';
-  console.log(`${half} [HALF] ${min}: ${event}`);
+// for (const [min, event] of gameEvents) {
+//   const half = min <= 45 ? 'FIRST' : 'SECOND';
+//   console.log(`${half} [HALF] ${min}: ${event}`);
+// }
+
+// ////////WORKING WITH STRINGS//////
+
+// const airline = 'TAP Air Portugal';
+// const plane = 'A320';
+
+// console.log(plane[0]); //will print A, the position of the letter
+
+// console.log('B307'[0]);
+// //will print B
+// console.log(airline.length); //16 letters
+
+// //////////////Methods//////
+
+// console.log(airline.indexOf('r')); //will print 6, as the sixth letter from the string
+// console.log(airline.lastIndexOf('r')); //will print 10, as the last r letter from the string
+// console.log(airline.indexOf('Portugal')); //starts at position 8
+
+// console.log(airline.slice(4)); //will print Air Portugal. Slice start to extract at position 4,we get a sub-string
+// console.log(airline.slice(4, 7)); //will Print Air, stops extracting before reaching the end .
+
+// //If you dont know actually the string and you want first words and last one
+
+// console.log(airline.slice(0, airline.indexOf(' '))); //will print TAP
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //will print Portugal
+
+// //define a begative begin argument
+// console.log(airline.slice(-2)); //al
+// console.log(airline.slice(1, -1)); //AP Air Portuga
+
+// //Example//
+
+// const checkMiddleSeat = function (seat) {
+//   //B and E are middle seats
+//   const s = seat.slice(-1); //extracts the last letter of the String
+//   if (s === 'B' || s === 'E') console.log('You got the middle seat😥');
+//   else console.log('You got lucky!');
+// };
+
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('3E');
+
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+
+// //Fix capitalization of a passenger name
+
+// const passenger = 'jOnAS'; //Jonas
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect =
+//   passengerLower[0].toUpperCase() + passengerLower.slice(1);
+
+// console.log(passengerLower, passengerCorrect);
+
+// //Comparing emails
+
+// const email = 'hello@jonas.io';
+// const loginEmail = '  Hello@Jonas.Io \n';
+
+// //Solution
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim(); //cleaning the white space and the enter
+// console.log(trimmedEmail);
+
+// //Best solution
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail);
+
+// console.log(email === normalizedEmail);
+
+// //Replacing
+
+// const priceGB = '288,97$';
+// const priceRON = priceGB.replace('$', 'RON').replace(',', '.');
+// console.log(priceRON);
+
+// const announcement = 'All passenger come to boarding door 23.Boarding door 23!';
+
+// console.log(announcement.replaceAll('door', 'gate')); //replaceALL method
+
+// //Booleans
+
+// const airPlane = 'Airbus A320neo';
+// console.log(airPlane.includes('A320')); //returns true
+// console.log(airPlane.startsWith('Air'));
+
+// if (airPlane.startsWith('Airbus') && airPlane.endsWith('neo')) {
+//   console.log('Part of the Airbus New family!');
+// }
+
+// //Practice exercise
+
+// const checkBagagge = function (items) {
+//   const bagagge = items.toLowerCase(); //always transform to lower case the input from a user
+
+//   if (bagagge.includes('knife') || bagagge.includes('gun')) {
+//     console.log('You are NOT allowed on board!');
+//   } else {
+//     console.log('Welcome aboard!');
+//   }
+// };
+
+// checkBagagge('I have a laptop, some food and a pocket Knife!');
+// checkBagagge('Socks and camera');
+// checkBagagge('Got some snacks and a gun for protection!');
+
+// ///SPLIT//JOIN///
+
+// console.log('a+very+nice+string'.split('+')); //removes the + everything split up into a new array
+// console.log('Jonas Schmedtmann'.split(' '));
+
+// const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+// /////Function to capitalize names////
+
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   const namesUpper = [];
+
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1)); //converting the first letter and add the last ones
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase())); //same result
+//   }
+//   console.log(namesUpper.join(' '));
+// };
+
+// capitalizeName('jessica ann smith davis');
+// capitalizeName('jonas smith gabor');
+
+// //Padding
+
+// const message = 'Go to gate 23';
+// console.log(message.padStart(25, '+')); //string lenght and the charchter we want to add.
+// console.log(message.padEnd(35, '*'));
+
+// //EXAMPLE//
+// const maskCreditCard = function (number) {
+//   const str = number + ''; //converting the number to string
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, '*');
+// };
+
+// console.log(maskCreditCard(2345656756765));
+// console.log(maskCreditCard('5465756786583'));
+
+// //Repeat///
+
+// const message2 = 'Bad weather...All departures delayed...';
+// console.log(message2.repeat(5)); //repeating the string 5 times
+
+// //Example//
+
+// const planesInline = function (n) {
+//   console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
+// };
+// planesInline(5);
+// planesInline(8);
+// planesInline(7);
+
+////////Challenge String Methods////
+//Transform this input to camelCase
+/* 
+underscore_case
+first_name
+Some_Variable
+  calculate_AGE
+  delayed_departure */
+
+// document.body.append(document.createElement('textarea'));
+// document.body.append(document.createElement('button'));
+
+// const text = document.querySelector('textarea').value;
+
+// document.querySelector('button').addEventListener('click', function () {
+//   const text = document.querySelector('textarea').value;
+//   console.log(text);
+//   const rows = text.split('\n');
+//   console.log(rows);
+
+//   for (const [i, row] of rows.entries()) {
+//     const [first, second] = row.toLowerCase().trim().split('_');
+
+//     const output = `${first}${second.replace(
+//       second[0],
+//       second[0].toUpperCase()
+//     )}`;
+//     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+//   }
+// });
+
+//Result//
+/*
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅*/
+
+//Challenge string methods//
+
+// Data needed for a later exercise
+
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+//looping over and get the 4 strings separated
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+    ':',
+    'h'
+  )})`.padStart(52);
+  console.log(output);
 }
-
-////////WORKING WITH STRINGS//////
-
-const airline = 'TAP Air Portugal';
-const plane = 'A320';
-
-console.log(plane[0]); //will print A, the position of the letter
-
-console.log('B307'[0]);
-//will print B
-console.log(airline.length); //16 letters
-
-//////////////Methods//////
-
-console.log(airline.indexOf('r')); //will print 6, as the sixth letter from the string
-console.log(airline.lastIndexOf('r')); //will print 10, as the last r letter from the string
-console.log(airline.indexOf('Portugal')); //starts at position 8
-
-console.log(airline.slice(4)); //will print Air Portugal. Slice start to extract at position 4,we get a sub-string
-console.log(airline.slice(4, 7)); //will Print Air, stops extracting before reaching the end .
-
-//If you dont know actually the string and you want first words and last one
-
-console.log(airline.slice(0, airline.indexOf(' '))); //will print TAP
-console.log(airline.slice(airline.lastIndexOf(' ') + 1)); //will print Portugal
-
-//define a begative begin argument
-console.log(airline.slice(-2)); //al
-console.log(airline.slice(1, -1)); //AP Air Portuga
-
-//Example//
-
-const checkMiddleSeat = function (seat) {
-  //B and E are middle seats
-  const s = seat.slice(-1); //extracts the last letter of the String
-  if (s === 'B' || s === 'E') console.log('You got the middle seat😥');
-  else console.log('You got lucky!');
-};
-
-checkMiddleSeat('11B');
-checkMiddleSeat('23C');
-checkMiddleSeat('3E');
-
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
-
-//Fix capitalization of a passenger name
-
-const passenger = 'jOnAS'; //Jonas
-const passengerLower = passenger.toLowerCase();
-const passengerCorrect =
-  passengerLower[0].toUpperCase() + passengerLower.slice(1);
-
-console.log(passengerLower, passengerCorrect);
-
-//Comparing emails
-
-const email = 'hello@jonas.io';
-const loginEmail = '  Hello@Jonas.Io \n';
-
-//Solution
-const lowerEmail = loginEmail.toLowerCase();
-const trimmedEmail = lowerEmail.trim(); //cleaning the white space and the enter
-console.log(trimmedEmail);
-
-//Best solution
-const normalizedEmail = loginEmail.toLowerCase().trim();
-console.log(normalizedEmail);
-
-console.log(email === normalizedEmail);
-
-//Replacing
-
-const priceGB = '288,97$';
-const priceRON = priceGB.replace('$', 'RON').replace(',', '.');
-console.log(priceRON);
-
-const announcement = 'All passenger come to boarding door 23.Boarding door 23!';
-
-console.log(announcement.replaceAll('door', 'gate')); //replaceALL method
-
-//Booleans
-
-const airPlane = 'Airbus A320neo';
-console.log(airPlane.includes('A320')); //returns true
-console.log(airPlane.startsWith('Air'));
-
-if (airPlane.startsWith('Airbus') && airPlane.endsWith('neo')) {
-  console.log('Part of the Airbus New family!');
-}
-
-//Practice exercise
-
-const checkBagagge = function (items) {
-  const bagagge = items.toLowerCase(); //always transform to lower case the input from a user
-
-  if (bagagge.includes('knife') || bagagge.includes('gun')) {
-    console.log('You are NOT allowed on board!');
-  } else {
-    console.log('Welcome aboard!');
-  }
-};
-
-checkBagagge('I have a laptop, some food and a pocket Knife!');
-checkBagagge('Socks and camera');
-checkBagagge('Got some snacks and a gun for protection!');
-
-///SPLIT//JOIN///
-
-console.log('a+very+nice+string'.split('+')); //removes the + everything split up into a new array
-console.log('Jonas Schmedtmann'.split(' '));
-
-const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
-
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
-
-/////Function to capitalize names////
-
-const capitalizeName = function (name) {
-  const names = name.split(' ');
-  const namesUpper = [];
-
-  for (const n of names) {
-    namesUpper.push(n[0].toUpperCase() + n.slice(1)); //converting the first letter and add the last ones
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase())); //same result
-  }
-  console.log(namesUpper.join(' '));
-};
-
-capitalizeName('jessica ann smith davis');
-capitalizeName('jonas smith gabor');
-
-//Padding
-
-const message = 'Go to gate 23';
-console.log(message.padStart(25, '+')); //string lenght and the charchter we want to add.
-console.log(message.padEnd(35, '*'));
-
-//EXAMPLE//
-const maskCreditCard = function (number) {
-  const str = number + ''; //converting the number to string
-  const last = str.slice(-4);
-  return last.padStart(str.length, '*');
-};
-
-console.log(maskCreditCard(2345656756765));
-console.log(maskCreditCard('5465756786583'));
-
-//Repeat///
-
-const message2 = 'Bad weather...All departures delayed...';
-console.log(message2.repeat(5)); //repeating the string 5 times
-
-//Example//
-
-const planesInline = function (n) {
-  console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
-};
-planesInline(5);
-planesInline(8);
-planesInline(7);
