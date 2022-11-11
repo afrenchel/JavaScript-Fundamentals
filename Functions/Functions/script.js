@@ -110,122 +110,162 @@ Functions are just another "type" of object */
 
 // //Makes easy to split the code and callback functions allows to create abstraction
 
-//?Functions returning functions//
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
-};
+// //?Functions returning functions//
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
 
-const greeterHey = greet('hey');
-greeterHey('Jonas');
-greeterHey('Steven');
+// const greeterHey = greet('hey');
+// greeterHey('Jonas');
+// greeterHey('Steven');
 
-greet('Hello')('Jonas');
+// greet('Hello')('Jonas');
 
-//**Challenge- transform into arrow function//
+// //**Challenge- transform into arrow function//
 
-const greetArr = greeting => name => console.log(`${greeting} ${name}`);
-greetArr('Hi')('Jonas');
+// const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+// greetArr('Hi')('Jonas');
 
-//?Call and apply method/////////////////////////////////////////////////
+// //?Call and apply method/////////////////////////////////////////////////
 
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  //book: function() {}
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
-    );
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-  },
-};
+// const lufthansa = {
+//   airline: 'Lufthansa',
+//   iataCode: 'LH',
+//   bookings: [],
+//   //book: function() {}
+//   book(flightNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+//   },
+// };
 
-lufthansa.book(239, 'Jonas Schmedtmann');
-lufthansa.book(635, 'John Smith');
-console.log(lufthansa);
+// lufthansa.book(239, 'Jonas Schmedtmann');
+// lufthansa.book(635, 'John Smith');
+// console.log(lufthansa);
 
-const eurowings = {
-  airline: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
+// const eurowings = {
+//   airline: 'Eurowings',
+//   iataCode: 'EW',
+//   bookings: [],
+// };
 
-const book = lufthansa.book; //take this function value and store it to a new variable
+// const book = lufthansa.book; //take this function value and store it to a new variable
 
-//Does not work
-// book(23, 'Sarah Smith');
+// //Does not work
+// // book(23, 'Sarah Smith');
 
-//!.call()method on function//set the this keyword////
+// //!.call()method on function//set the this keyword////
 
-book.call(eurowings, 23, 'Sarah Smith'); //call method which will call the book function with the this keywords set by us.
-console.log(eurowings);
+// book.call(eurowings, 23, 'Sarah Smith'); //call method which will call the book function with the this keywords set by us.
+// console.log(eurowings);
 
-book.call(lufthansa, '239', 'Mary Cooper');
-console.log(lufthansa);
+// book.call(lufthansa, '239', 'Mary Cooper');
+// console.log(lufthansa);
 
-const swiss = {
-  airline: 'Swiss Air Lines',
-  iataCode: 'LX',
-  bookings: [],
-};
-book.call(swiss, 583, 'John McDonald');
-console.log(swiss);
+// const swiss = {
+//   airline: 'Swiss Air Lines',
+//   iataCode: 'LX',
+//   bookings: [],
+// };
+// book.call(swiss, 583, 'John McDonald');
+// console.log(swiss);
 
-//!Apply() method/////needs an array
+// //!Apply() method/////needs an array
 
-const flightData = [567, 'George Cooper'];
-book.apply(swiss, flightData);
-console.log(swiss);
+// const flightData = [567, 'George Cooper'];
+// book.apply(swiss, flightData);
+// console.log(swiss);
 
-book.call(swiss, ...flightData); //using the call method and spreding out the arguments from an array
+// book.call(swiss, ...flightData); //using the call method and spreding out the arguments from an array
 
-//!Bind method//returns a new function where the this keywords is applied
+// //!Bind method//returns a new function where the this keywords is applied
 
-const bookEw = book.bind(eurowings);
-const bookLH = book.bind(lufthansa);
-const bookLX = book.bind(swiss);
-bookEw(23, 'Steven Williams');
+// const bookEw = book.bind(eurowings);
+// const bookLH = book.bind(lufthansa);
+// const bookLX = book.bind(swiss);
+// bookEw(23, 'Steven Williams');
 
-//Example
+// //Example
 
-const bookEW23 = book.bind(eurowings, 23); //we preset the flight number
-bookEW23('Jonas Schmedtmann');
-bookEW23('Martha Cooper');
+// const bookEW23 = book.bind(eurowings, 23); //we preset the flight number
+// bookEW23('Jonas Schmedtmann');
+// bookEW23('Martha Cooper');
 
-//!With Event Listeners-using the BIND()
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
-  this.planes++;
-  console.log(this.planes);
-};
+// //!With Event Listeners-using the BIND()
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//   console.log(this);
+//   this.planes++;
+//   console.log(this.planes);
+// };
 
-document
-  .querySelector('.buy')
-  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// document
+//   .querySelector('.buy')
+//   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 
-//!Partial application(bind())
+// //!Partial application(bind())
 
-const addTax = (rate, value) => value + value * rate;
-console.log(addTax(0.1, 200));
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.1, 200));
 
-const addVAT = addTax.bind(null, 0.23); //sets the rate value at 23%
+// const addVAT = addTax.bind(null, 0.23); //sets the rate value at 23%
 
-console.log(addVAT(100));
+// console.log(addVAT(100));
 
-//Challenge//
-const addTaxRate = function (rate) {
-  return function (value) {
-    return value + value * rate;
-  };
-};
-const addVAT2 = addTaxRate(0.23);
-console.log(addVAT2(100));
+// //Challenge//
+// const addTaxRate = function (rate) {
+//   return function (value) {
+//     return value + value * rate;
+//   };
+// };
+// const addVAT2 = addTaxRate(0.23);
+// console.log(addVAT2(100));
 
-//?Closure//
+// //Challenge//
+
+// const poll = {
+//   question: 'What is zyour favourite programming language?',
+//   options: ['0: Java Script', '1:Python', '2:Rust', '3:C++'],
+//   answers: new Array(4).fill(0),
+//   //Get answer
+//   registerNewAnswer() {
+//     const answer = Number(
+//       prompt(
+//         `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+//       )
+//     );
+//     //Register answers
+//     console.log(answer);
+//     typeof answer === 'number' &&
+//       answer < this.answers.length &&
+//       this.answers[answer]++; //shortcircuititng
+//     console.log(this.answers);
+//     this.displayResults();
+//     this.displayResults('string');
+//   },
+//   displayResults(type = 'array') {
+//     if (type === 'array') {
+//       console.log(this.answers);
+//     } else if (type === 'string') {
+//       console.log(`Poll results are ${this.answers.join(', ')}`);
+//     }
+//   },
+// };
+// // poll.registerNewAnswer();
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+// //BONUS//
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 7] });
+// [5, 2, 3][(1, 5, 3, 9, 6, 7)];
+
+// //?Closure//
 
 // var passed = 3;
 // const addTo = function () {
@@ -259,3 +299,34 @@ console.log(addVAT2(100));
 // };
 // g();
 // f();
+
+//!Challenge//Closure//
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
+
+//?IIFE functions//
+
+// const runOnce = function () {
+//   console.log('This will never run again');
+// };
+
+// runOnce();
+
+// (function () {
+//   console.log('This will never run again');
+//   const isPrivate = 23;//is available only here!!! variable incapsulation
+// })(); //imediately invoked function expression
+
+// (() => console.log('This will ALSO run once'))();
+
+// {
+//   const isPrivate = 23;
+//   var notPrivate = 23;
+// }
+// console.log(isPrivate); //not accessbile
+// console.log(notPrivate); //accessible
