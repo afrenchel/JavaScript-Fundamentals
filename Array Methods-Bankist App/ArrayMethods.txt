@@ -88,3 +88,42 @@ currenciesUnique.forEach(function (value, _, map) {
   console.log(`${key}: ${value}`);
 });
 //keep the same parameters but to avoid confusions beacuse we don't have key values in SETS we can use _
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+// //!Data transformations: Map, Filter,Reduce
+// //MAP - maps the value of the original array into a new array, this is the difference in map and for each
+// //FILTER- filter elements which satisfy a certain condition and returns a new array with the filtered elements
+// //REDUCE-acc+current, reduces all elements into one, usefull when we want to add the elements; no new array
+
+// //?MAP//(Functional programming style)
+
+// const movementsMAP = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const eurToUsd = 1.1;
+
+// const movementsUSD = movementsMAP.map(function (movMAP) {
+//   return movMAP * eurToUsd;
+// });
+// //Arrow function//
+// // const movementsUSD= movements.map(movMAP=> movMAP * eutToUsd);
+
+// console.log(movementsMAP);
+// console.log(movementsUSD);
+
+// //Example with FOR//SAME as above, but you create a manual array//
+// const movementsUSDfor = [];
+// for (const mov of movementsMAP) movementsUSDfor.push(mov * eurToUsd);
+// console.log(movementsUSDfor);
+
+// const movementsDEscriptions = movementsMAP.map((mov, i) => {
+//   if (mov > 0) {
+//     return `You deposited ${mov}`;
+//   } else {
+//     return `You withdrew ${Math.abs(mov)}`;
+//   }
+// });
+
+// console.log(movementsDEscriptions);

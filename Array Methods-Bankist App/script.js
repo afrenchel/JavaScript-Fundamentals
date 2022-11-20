@@ -64,17 +64,34 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //Instead of working with global data pass the data into a function//
 
 const displayMovements = function (movements) {
+  containerMovements.innerHTML = ''; //clean what it was before, similar to text content
   movements.forEach(function (mov, i) {
-    const type = mov > 0 ? 'deposit' : 'withdrawl';
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-    const html = ` <div class="movements__row">
+    const html = `
+    <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
       i + 1
-    }${type}</div>
+    } ${type}</div>
         <div class="movements__value">${mov}</div>
       </div>`;
-      .insertAdjacentHTML
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
 
 displayMovements(account1.movements);
+
+const createUsernames = function (accounts) {
+
+  accounts.forEach(function(acc){
+
+  })
+  const username = user
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  return username;
+};
+console.log(createUsernames(accounts);
+// // console.log(containerMovements.innerHTML);//se all the html in the container Movements
