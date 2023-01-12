@@ -431,7 +431,7 @@ const game = {
 
 ///Looping over objects
 
-//Proprety NAMES
+//?Proprety NAMES//
 
 // const properties = Object.keys(openingHours);
 // console.log(properties);
@@ -689,7 +689,7 @@ const game = {
 
 // console.log(email === normalizedEmail);
 
-// //Replacing
+//? //Replacing
 
 // const priceGB = '288,97$';
 // const priceRON = priceGB.replace('$', 'RON').replace(',', '.');
@@ -699,7 +699,7 @@ const game = {
 
 // console.log(announcement.replaceAll('door', 'gate')); //replaceALL method
 
-// //Booleans
+//? //Booleans
 
 // const airPlane = 'Airbus A320neo';
 // console.log(airPlane.includes('A320')); //returns true
@@ -709,7 +709,7 @@ const game = {
 //   console.log('Part of the Airbus New family!');
 // }
 
-// //Practice exercise
+//*Practice exercise//
 
 // const checkBagagge = function (items) {
 //   const bagagge = items.toLowerCase(); //always transform to lower case the input from a user
@@ -725,7 +725,7 @@ const game = {
 // checkBagagge('Socks and camera');
 // checkBagagge('Got some snacks and a gun for protection!');
 
-// ///SPLIT//JOIN///
+///?SPLIT//JOIN///
 
 // console.log('a+very+nice+string'.split('+')); //removes the + everything split up into a new array
 // console.log('Jonas Schmedtmann'.split(' '));
@@ -751,7 +751,7 @@ const game = {
 // capitalizeName('jessica ann smith davis');
 // capitalizeName('jonas smith gabor');
 
-// //Padding
+//?Padding//
 
 // const message = 'Go to gate 23';
 // console.log(message.padStart(25, '+')); //string lenght and the charchter we want to add.
@@ -767,7 +767,7 @@ const game = {
 // console.log(maskCreditCard(2345656756765));
 // console.log(maskCreditCard('5465756786583'));
 
-// //Repeat///
+//?Repeat///
 
 // const message2 = 'Bad weather...All departures delayed...';
 // console.log(message2.repeat(5)); //repeating the string 5 times

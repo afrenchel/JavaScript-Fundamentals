@@ -426,3 +426,38 @@ const y = Array.from({ length: 7 }, () => 1);
 console.log(y);
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z);
+
+//More Array Methods practice
+
+//Challenge Array Methods
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+//1.
+dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)));
+console.log(dogs);
+//2.
+dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(
+  `Sarah's dog is eating ${
+    dogSarah.curFood > dogSarah.recFood ? 'much' : 'to little'
+  }`
+);
+
+//3.
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recFood)
+  .map(dog => dog.owners)
+  .flat();
+console.log(ownersEatTooMuch);
+
+//4.
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recFood)
+  .map(dog => dog.owners)
+  .flat();
+console.log(ownersEatTooLittle);
