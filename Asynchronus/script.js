@@ -196,3 +196,5 @@ btn.addEventListener('click', function () {
 //finally method is called always even if promise is settled or rejected
 
 // getCountryData('dsdsfsds'); //error 404
+
+// testing push commits
