@@ -20,3 +20,4 @@ class SearchView {
 }
 
 export default new SearchView();
+console.log('Test deploy');
