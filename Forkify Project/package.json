@@ -2,19 +2,21 @@
   "name": "forkify",
   "version": "1.0.0",
   "description": "Recipe application",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Frenchel Alina",
   "license": "ISC",
   "dependencies": {
-    "live-server": "^1.2.2",
+    "core-js": "^3.27.2",
+    "live-server": "^1.1.0",
+    "regenerator-runtime": "^0.13.11",
     "sass": "^1.57.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
     "process": "^0.11.10"
-  },
-  "main": "index.js"
+  }
 }
